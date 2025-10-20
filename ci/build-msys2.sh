@@ -2,16 +2,7 @@
 
 . ./ci/build-common.sh
 
-args=(
-  -D{cdda,d3d-hwaccel,d3d11,dvdnav,jpeg,lcms2,libarchive}=enabled
-  -D{libbluray,lua,shaderc,spirv-cross,uchardet,vapoursynth}=enabled
-  -D{egl-angle-lib,egl-angle-win32,pdf-build,rubberband,win32-smtc}=enabled
-)
+pwd
+ls
 
-[[ "$SYS" == "clang64" ]] && args+=(
-  -Db_sanitize=address,undefined
-)
-
-meson setup build $common_args "${args[@]}"
-meson compile -C build
-./build/mpv.com -v --no-config
+lldb --batch -o 'run' -k 'bt' -- rst2pdf.exe -c -b 1 --repeat-table-rows DOCS/man/mpv.rst -o mpv.pdf | cat

@@ -531,12 +531,6 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - sys: "clang64"
-            os: "windows-latest"
-          - sys: "mingw64"
-            os: "windows-latest"
-          - sys: "ucrt64"
-            os: "windows-latest"
           - sys: "clangarm64"
             os: "windows-11-arm"
     defaults:
@@ -580,6 +574,7 @@ jobs:
             uchardet:p
             vapoursynth:p
             vulkan-devel:p
+            lldb:p
 
       - name: Build with meson
         id: build
